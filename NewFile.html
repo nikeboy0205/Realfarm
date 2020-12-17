@@ -193,7 +193,7 @@ str += "- 톡방에 !도움말 입력\n";
          return;
       }
  }
-   if (msg.indexOf ("!관리자") == 0 && admin.indexOf(sender) != 0) {	   
+   if (msg.indexOf ("!관리자") == 0 && admin.indexOf(sender) != 0) {
 	   		  var ad = [];
 	   		  var adminYn =false;
 	   		  for(var i = 0; i < admin.length; i++){
@@ -227,7 +227,7 @@ str += "- 톡방에 !도움말 입력\n";
 	            }
 	   		  }else{
 				replier.reply (sender + "님은 누구슈? 관리자인척 ㄴㄴ");
-			  }    
+			  }
    }
 
    if(msg.indexOf("!방장님 재산") == 0 ){ replier.reply("숨겨둔 것 까지 제가 탈탈 털어오겠습니다! 맡겨주세요!");}
@@ -263,7 +263,7 @@ str += "- 톡방에 !도움말 입력\n";
      if(a==b&&b==c){
          replier.reply(sender+"님 당첨이네요! 축하드립니다. 방장님에게 1억 받아가세요~!!당첨금 수령방법 : http://live-event.na.to")
      } else {
-         
+
          var adminYn =false;
   		  for(var i = 0; i < admin.length; i++){
   			  if(sender == admin[i]){
@@ -402,13 +402,13 @@ str += "- 톡방에 !도움말 입력\n";
 
 	while (true)
 	{//2
-		var date = new Date()		
-		java.lang.Thread.sleep(1000)//1초	
-		
+		var date = new Date()
+		java.lang.Thread.sleep(1000)//1초
+
 		if(date.getHours() == '0' && date.getMinutes() == '1' && date.getSeconds() == '1' )
 		{lotteUser = [];Api.replyRoom("레즐모", "열두시입니다. 안주무세요? 꿀잠자세요~");}//3
 	}//2
-	
+
 </script>
 <body>
 
