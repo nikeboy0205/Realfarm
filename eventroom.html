@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta content="ko" http-equiv="Content-Language" />
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<title>레즐모 이벤트전용방 안내</title>
+<style type="text/css">
+.auto-style1 {
+	color: #FF0000;
+	font-size: x-large;
+}
+.auto-style2 {
+	font-size: x-large;
+}
+
+body {
+   -webkit-font-smoothing: subpixel-antialiased;
+   -webkit-touch-callout: none;
+   -webkit-user-select: none;
+   -khtml-user-select: none;
+   -ms-user-select: none;
+   -moz-user-select: none;
+   user-select: none;
+}
+
+</style>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-latest.js"></script>
+
+ <script type="text/javascript">
+
+ $(document).ready(function(){
+	 $(document).bind("contextmenu", function(e) {
+		return false;
+	});
+});
+
+});
+$(document)[0].oncontextmenu = function() { return false; }
+$(document).mousedown(function(e) {
+	if( e.button == 2 ) {
+			return false;
+	} else {
+			return true;
+	}
+});
+
+// 우측 클릭 방지
+document.onmousedown=disableclick;
+
+function disableclick(event){
+if (event.button==2) {
+		return false;
+}
+}
+
+ </script>
+</head>
+
+<body width="100%" oncontextmenu='return false' onselectstart='return false' ondragstart='return false'>
+	<div id="dialogoverlay"></div>
+<div id="dialogbox">
+  <div>
+    <div id="dialogboxhead"></div>
+    <div id="dialogboxbody"></div>
+    <div id="dialogboxfoot"></div>
+  </div>
+</div>
+			<p>레즐모 톡방에서의 잦은 이벤트 진행으로인해<br />
+			짧은시간내에 과도한 채팅발생으로,
+			배터리와 데이터 소모를 호소하시는 분들이 많아서<br />
+			레즐모 이벤트전용 톡방을 따로 개설했습니다.<br />
+			개인이벤트를 진행하실분들은 이 톡방에서 해주시면 되겠습니다.<br />
+			레즐모 공식 이벤트도 여기서 진행합니다!<br />
+			<br />
+			<br />
+			<strong><a href="https://open.kakao.com/o/gzzWM1vb"><span class="auto-style2">레즐모 이벤트전용 톡방 들어가기</span></a></strong>
+			&lt;─ 클릭!<br />
+			<br />
+			<br />
+			<span class="auto-style1"><strong>참여코드 : 1357</strong></span></p>
+
+
+</body>
+
+</html>

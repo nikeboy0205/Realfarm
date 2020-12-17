@@ -1,0 +1,127 @@
+var command;
+var luck1 = [];
+var lucky = [];
+var lottoU = [];
+var most = [];
+var mostCount = [];
+var yn = false;
+function response(room, msg, sender, isGroupChat, replier, ImageDB) {
+      //모든 배열 초기화
+      if(msg.startsWith("!이벤트 시작")){
+       luck1 = []; lucky=[]; most = [];mostCount = [];
+       replier.reply( sender+" 님이 이벤트를 시작합니다! 모든 준비가 완료되었습니다. 즐거운 이벤트 되세요^^*");
+      }
+      if(msg.startsWith("!이벤트 종료")){
+       luck1 = []; lucky=[]; most = [];mostCount = [];
+       replier.reply( "이벤트가 종료되었습니다 다음에또봐요~^^*");
+      }
+      if(msg == "!멍청이"){
+        replier.reply( sender+"님 멍청이예요?~^^*ㅇㅋㅇㅋ");
+
+      }
+
+      if(msg == "!로또추첨") {
+        var lotto = new Array(5);
+        var c = 0;
+        var o = true;
+        while (c < 5) {
+            var n = 0;
+            n = Math.floor(Math.random()*45 + 1);
+            for (var i = 0; i < c; i++) {
+                if(lotto[i] == n) {
+                    o = false;
+                }
+            }
+            if(o) {
+                lotto[c] = n;
+                c++
+            }
+            o = true;
+        }
+        lotto.sort(function(a,b){return a-b;});
+        replier.reply("로또 추첨\n"+lotto[0]+"/"+lotto[1]+"/"+lotto[2]+"/"+lotto[3]+"/"+lotto[4]);
+        //luck1 - 닉,답  lucky - 정답자닉
+
+          for(var i = 0; i < luck1.length; i++){
+          	var b = luck1[i].split(",")[1];
+          	for(var j = 0; j < b.length; j++){
+          		var su = b[j].split("/");
+          		var cnt = 0;
+          		for(var k = 0; k < lotto.length; k++){
+          			if(su[j] == lotto[k]){
+          				cnt++;
+          			}
+          		}
+          		lottoU[i] = luck1[i]+","+cnt;
+          	}
+          }
+
+      }
+if(msg == "!목록"){
+replier.reply(lottoU);
+}
+      if(msg == "!추첨"){
+         var a = luck1;
+         var su = a[Math.floor(Math.random() * a.length)];
+         replier.reply( su.split(",")[0]+"님께서 당첨되셨습니다. 축하드려요^^");
+
+      }
+
+       //정답과 정답자배열 초기화
+       if(msg.startsWith("!문제 나갑니다")){
+         luck1 = []; lucky=[]; lottoU =[]; yn = true;
+         replier.reply("내밑으로 모두 조용해 주세요!-----");
+       }
+       //종료지점
+       if(msg.startsWith("!그만")){
+         replier.reply("더이상의 답은 받지 않는다.-----");yn = false;
+       }
+
+      //정답을 알려주면서 정답자를 배열에 넣는다
+       if(msg.startsWith("!정답은")){
+         msg=msg.trim(); // 정답의 빈칸을 없애준다.
+         command = msg.substr(4);
+
+         for(var i = 0; i < luck1.length; i++){
+           if(luck1[i].split(",")[1] == command){
+             lucky.push(luck1[i].split(",")[0]);
+           }
+         }
+
+       }
+       //정답자발표를 하며 원하는 등수의 정답자를 뽑아온다
+       if(msg.startsWith("!정답자발표")){
+         command = msg.substr(6);
+         var na = command.split(",");
+         var str = "";
+         for(var i = 0; i < na.length; i++){
+            if(typeof lucky[na[i]-1] != "undefined"){
+               str += lucky[na[i]-1]+"님 "+ na[i]+"등,";
+            }
+         }
+
+         replier.reply( str+" 축하드립니다.");
+       }
+
+
+       //정답을 넣는다
+       if(msg.startsWith("답-")){
+         if(yn)
+         {
+         msg=msg.trim(); // 정답의 빈칸을 없애준다.
+         command = msg.substr(2);
+         luck1.push(sender+","+command);
+         }
+       }
+       if(msg == "!참여자 목록"){
+
+           var str="";
+          for(var i = 0; i < luck1.length; i++){
+             str+= luck1[i].split(",")[0]+"\n"
+
+          }
+          replier.reply(str+"\n 총 "+luck1.length+"명 입니다.");
+
+       }
+
+}
